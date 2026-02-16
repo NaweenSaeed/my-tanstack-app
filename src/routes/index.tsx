@@ -8,7 +8,7 @@ function Home() {
   return (
     <main className="min-h-screen flex items-center justify-center bg-slate-900">
       <h1 className="text-5xl font-extrabold text-white">
-        Hello World – Naween – Deployment 2
+        Hello World – Naween – Deployment 2 – CI/CD is working!
       </h1>
     </main>
   );
