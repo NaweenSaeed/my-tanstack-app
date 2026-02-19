@@ -1,5 +1,7 @@
 {
     "buildCommand": "npm run build",
-    "outputDirectory": ".output/server",
-    "framework": "vite"
+    "outputDirectory": ".output/public",
+    "serverless": {
+        "default": ".output/server"
+    }
 }
