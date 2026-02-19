@@ -90,6 +90,6 @@ function LandingPage() {
  * IMPORTANT:
  * This must be "/" (NOT "/_index")
  */
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/_index")({
     component: LandingPage,
 })
