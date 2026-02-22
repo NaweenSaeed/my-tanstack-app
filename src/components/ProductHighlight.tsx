@@ -1,15 +1,35 @@
-// src/components/ProductHighlight.tsx
+// src/components/HighlightsSection.tsx
 
-type ProductHighlightProps = {
-    title: string
-    description: string
+import type { ReactNode } from "react"
+
+export interface HighlightsSectionProps {
+    heading: string
+    subheading?: string
+    children: ReactNode
 }
 
-export function ProductHighlight(props: ProductHighlightProps) {
+export function HighlightsSection({
+    heading,
+    subheading,
+    children,
+}: HighlightsSectionProps) {
     return (
-        <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm">
-            <h3 className="text-base font-semibold text-zinc-900">{props.title}</h3>
-            <p className="mt-1 text-sm text-zinc-600">{props.description}</p>
-        </div>
+        <section className="mt-6 rounded-2xl border border-zinc-200 bg-zinc-50 p-5">
+            <header>
+                <h2 className="text-lg font-semibold text-zinc-900">
+                    {heading}
+                </h2>
+
+                {subheading ? (
+                    <p className="mt-1 text-sm text-zinc-600">
+                        {subheading}
+                    </p>
+                ) : null}
+            </header>
+
+            <div className="mt-4">
+                {children}
+            </div>
+        </section>
     )
 }
