@@ -1,57 +1,35 @@
-// src/features/products/products.ts
+export type ViewMode = "grid" | "list"
 
 export type Product = {
     id: string
     name: string
     description: string
-    priceCents: number
-    imageUrl: string
+    price: number
     tags: string[]
-    inStock: boolean
+    featured?: boolean
 }
 
-export const PRODUCTS: Product[] = [
+export const products: Product[] = [
     {
-        id: "p-espresso",
-        name: "Espresso Beans",
-        description: "Bold roast for espresso and moka pots.",
-        priceCents: 1599,
-        imageUrl: "https://picsum.photos/seed/espresso/800/600",
-        tags: ["coffee", "best-seller"],
-        inStock: true,
+        id: "starter-kit",
+        name: "Starter Kit",
+        description: "Everything you need to get going fast.",
+        price: 29,
+        tags: ["popular", "fast"],
+        featured: true,
     },
     {
-        id: "p-matcha",
-        name: "Ceremonial Matcha",
-        description: "Bright matcha for lattes or whisking.",
-        priceCents: 2499,
-        imageUrl: "https://picsum.photos/seed/matcha/800/600",
-        tags: ["tea", "new"],
-        inStock: true,
+        id: "pro-kit",
+        name: "Pro Kit",
+        description: "More power, more options, better workflow.",
+        price: 59,
+        tags: ["pro"],
     },
     {
-        id: "p-mug",
-        name: "Stoneware Mug",
-        description: "Comfort handle, everyday use.",
-        priceCents: 1899,
-        imageUrl: "https://picsum.photos/seed/mug/800/600",
-        tags: ["gear"],
-        inStock: false,
-    },
-    {
-        id: "p-tote",
-        name: "Everyday Tote",
-        description: "Carry your essentials, simple and durable.",
-        priceCents: 2999,
-        imageUrl: "https://picsum.photos/seed/tote/800/600",
-        tags: ["gear"],
-        inStock: true,
+        id: "team-kit",
+        name: "Team Kit",
+        description: "Built for teams who ship together.",
+        price: 99,
+        tags: ["team", "new"],
     },
 ]
-
-export function formatPrice(priceCents: number) {
-    return new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-    }).format(priceCents / 100)
-}

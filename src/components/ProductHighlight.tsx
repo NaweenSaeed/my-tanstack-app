@@ -1,4 +1,5 @@
-// src/components/ProductHighlight.tsx
+import * as React from "react"
+
 export interface ProductHighlightProps {
     title: string
     description: string
@@ -19,27 +20,23 @@ export function ProductHighlight({
             type="button"
             onClick={onSelect}
             className={[
-                "w-full rounded-xl border p-4 text-left transition",
-                featured ? "border-zinc-900 bg-zinc-50" : "border-zinc-200 bg-white",
-                onSelect ? "hover:bg-zinc-50" : "",
+                "text-left rounded-xl border p-4 transition",
+                featured ? "border-zinc-900 bg-zinc-50" : "border-zinc-200 bg-white hover:bg-zinc-50",
             ].join(" ")}
         >
             <div className="flex items-start justify-between gap-3">
-                <div>
-                    <h3 className="text-base font-semibold text-zinc-900">{title}</h3>
-                    <p className="mt-1 text-sm text-zinc-600">{description}</p>
-                </div>
+                <h3 className="text-lg font-semibold text-zinc-900">{title}</h3>
 
                 {badgeText ? (
-                    <span className="shrink-0 rounded-full bg-zinc-900 px-3 py-1 text-xs font-medium text-white">
+                    <span className="rounded-full bg-zinc-900 px-2 py-1 text-xs font-medium text-white">
                         {badgeText}
                     </span>
                 ) : null}
             </div>
 
-            {featured ? (
-                <p className="mt-3 text-xs font-medium text-zinc-700">Featured</p>
-            ) : null}
+            <p className="mt-2 text-sm text-zinc-600">{description}</p>
+
+            {featured ? <p className="mt-3 text-xs font-medium text-zinc-700">Featured</p> : null}
         </button>
     )
 }
