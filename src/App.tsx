@@ -1,8 +1,7 @@
-import { LandingPage } from ",/features/landing/LandingPage"
-import { ProductHighlight } from "./components/ProductHighlight"
+// src/App.tsx
+import { RouterProvider } from "@tanstack/react-router";
+import { router } from "./router";
 
-function App() {
-    return <LandingPage />
+export default function App() {
+  return <RouterProvider router={router} />;
 }
-
-export default App
