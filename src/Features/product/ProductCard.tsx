@@ -1,7 +1,7 @@
 // src/features/products/ProductCard.tsx
 
-import type { Product } from "./Products"
-import { formatPrice } from "./Products"
+import type { Product } from "./Product"
+import { formatPrice } from "./Product"
 
 export type ProductView = "grid" | "list"
 

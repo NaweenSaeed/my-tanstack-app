@@ -1,7 +1,7 @@
 import * as React from "react"
 import { HighlightsSection } from "../components/HighlightsSection"
 import { ProductHighlight } from "../components/ProductHighlight"
-import { ProductShowcase } from "../features/products/ProductShowcase"
+import { ProductShowcase } from "../features/product/ProductShowcase"
 
 type Highlight = {
     id: string

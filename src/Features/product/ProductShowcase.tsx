@@ -1,7 +1,7 @@
 // src/features/products/ProductShowcase.tsx
 
 import * as React from "react"
-import { PRODUCTS, type Product } from "./Products"
+import { PRODUCTS, type Product } from "./Product"
 import { ProductCard, type ProductView } from "./ProductCard"
 import { ViewToggle } from "./ViewToggle"
 
