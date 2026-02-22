@@ -5,6 +5,8 @@ function RootComponent() {
   return <Outlet />
 }
 
-export const Route = createRootRoute({
+export const rootRoute = createRootRoute({
   component: RootComponent,
 })
+
+export const Route = rootRoute

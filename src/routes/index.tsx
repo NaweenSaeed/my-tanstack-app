@@ -1,4 +1,6 @@
 import * as React from "react"
+import { createRoute, createFileRoute } from "@tanstack/react-router"
+import { rootRoute } from "./__root"
 import { HighlightsSection } from "../components/HighlightsSection"
 import { ProductHighlight } from "../components/ProductHighlight"
 import { ProductShowcase } from "../features/product/ProductShowcase"
@@ -32,7 +34,7 @@ const highlights: Highlight[] = [
     },
 ]
 
-export default function HomePage() {
+function HomePage() {
     return (
         <main className="mx-auto max-w-6xl p-6">
             <h1 className="text-3xl font-bold text-zinc-900">Sprint 3 React Components</h1>
@@ -64,3 +66,9 @@ export default function HomePage() {
         </main>
     )
 }
+
+export const Route = createRoute("/")({
+    getParentRoute: () => rootRoute,
+    path: "/",
+    component: HomePage,
+})
