@@ -1,35 +1,40 @@
-// src/components/HighlightsSection.tsx
-
-import type { ReactNode } from "react"
-
-export interface HighlightsSectionProps {
-    heading: string
-    subheading?: string
-    children: ReactNode
+// src/components/ProductHighlight.tsx
+export interface ProductHighlightProps {
+    title: string
+    description: string
+    icon?: string
+    emphasized?: boolean
+    onSelect?: () => void
 }
 
-export function HighlightsSection({
-    heading,
-    subheading,
-    children,
-}: HighlightsSectionProps) {
+export function ProductHighlight({
+    title,
+    description,
+    icon,
+    emphasized = false,
+    onSelect,
+}: ProductHighlightProps) {
     return (
-        <section className="mt-6 rounded-2xl border border-zinc-200 bg-zinc-50 p-5">
-            <header>
-                <h2 className="text-lg font-semibold text-zinc-900">
-                    {heading}
-                </h2>
-
-                {subheading ? (
-                    <p className="mt-1 text-sm text-zinc-600">
-                        {subheading}
-                    </p>
+        <button
+            type="button"
+            onClick={onSelect}
+            className={[
+                "w-full text-left rounded-xl border p-4 transition",
+                emphasized ? "ring-2 ring-offset-2" : "",
+            ].join(" ")}
+        >
+            <div className="flex items-start gap-3">
+                {icon ? (
+                    <div className="text-2xl leading-none" aria-hidden="true">
+                        {icon}
+                    </div>
                 ) : null}
-            </header>
 
-            <div className="mt-4">
-                {children}
+                <div>
+                    <h3 className="font-semibold">{title}</h3>
+                    <p className="text-sm opacity-80">{description}</p>
+                </div>
             </div>
-        </section>
+        </button>
     )
 }
