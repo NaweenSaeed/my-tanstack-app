@@ -1,85 +1,66 @@
-// src/routes/index.tsx
-import { useState } from "react"
+import * as React from "react"
 import { HighlightsSection } from "../components/HighlightsSection"
 import { ProductHighlight } from "../components/ProductHighlight"
+import { ProductShowcase } from "../features/products/ProductShowcase"
 
-type ViewMode = "list" | "grid"
+type Highlight = {
+    id: string
+    title: string
+    description: string
+    badgeText?: string
+    featured?: boolean
+}
 
-const highlights = [
+const highlights: Highlight[] = [
     {
-        title: "Fast setup",
-        description: "Start building in minutes with a clean starter structure.",
-        icon: "⚡️",
-        emphasized: true,
+        id: "fast-shipping",
+        title: "Fast shipping",
+        description: "Get your order in 2–3 business days with tracking.",
+        badgeText: "Popular",
+        featured: true,
     },
     {
-        title: "Typed components",
-        description: "Props interfaces make your UI safer and easier to reuse.",
-        icon: "✅",
-        emphasized: false,
+        id: "quality",
+        title: "Built to last",
+        description: "Durable materials and a 2-year warranty included.",
     },
     {
-        title: "Reusable layout",
-        description: "Use children for composition and clean page structure.",
-        icon: "🧱",
-        emphasized: false,
+        id: "support",
+        title: "Human support",
+        description: "Chat with a real person in under 2 minutes.",
+        badgeText: "New",
     },
 ]
 
 export default function HomePage() {
-    const [viewMode, setViewMode] = useState<ViewMode>("grid")
-
     return (
-        <main>
-            <div className="mx-auto max-w-5xl px-6 pt-10">
-                <div className="flex items-center justify-between gap-4">
-                    <h1 className="text-3xl font-bold">Product Highlights</h1>
-
-                    <div className="flex gap-2">
-                        <button
-                            className="rounded border px-3 py-2"
-                            onClick={() => setViewMode("list")}
-                            type="button"
-                        >
-                            List
-                        </button>
-                        <button
-                            className="rounded border px-3 py-2"
-                            onClick={() => setViewMode("grid")}
-                            type="button"
-                        >
-                            Grid
-                        </button>
-                    </div>
-                </div>
-
-                <p className="mt-2 opacity-80">
-                    Current view mode: <strong>{viewMode}</strong>
-                </p>
-            </div>
+        <main className="mx-auto max-w-6xl p-6">
+            <h1 className="text-3xl font-bold text-zinc-900">Sprint 3 React Components</h1>
+            <p className="mt-2 text-zinc-600">
+                This page demonstrates props, typed props, children composition, state, events, immutability, and keys.
+            </p>
 
             <HighlightsSection
-                heading="Why people like this"
-                subheading="Props, children composition, and state toggle (list or grid)."
+                heading="Product Highlights"
+                subheading="Highlights are passed from a parent array into reusable child components."
             >
-                <div
-                    className={[
-                        viewMode === "grid" ? "grid sm:grid-cols-2 lg:grid-cols-3" : "grid",
-                        "gap-4",
-                    ].join(" ")}
-                >
-                    {highlights.map((h, idx) => (
+                <div className="grid gap-4 sm:grid-cols-2">
+                    {highlights.map((h) => (
                         <ProductHighlight
-                            key={h.title}
+                            key={h.id}
                             title={h.title}
                             description={h.description}
-                            icon={h.icon}
-                            emphasized={h.emphasized}
-                            onSelect={() => alert(`Selected #${idx + 1}: ${h.title}`)}
+                            badgeText={h.badgeText}
+                            featured={h.featured}
+                            onSelect={() => console.log("Highlight selected:", h.id)}
                         />
                     ))}
                 </div>
             </HighlightsSection>
+
+            <div className="mt-10">
+                <ProductShowcase />
+            </div>
         </main>
     )
 }
